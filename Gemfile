@@ -15,6 +15,7 @@ group :test do
 end
 
 group :development do
+  gem "byebug"
   gem "rubocop", require: false  # linting
   gem "solargraph"               # Ruby language server for IDE autocompletion
 end
