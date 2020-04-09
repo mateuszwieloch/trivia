@@ -1,14 +1,2 @@
-AllCops:
-  TargetRubyVersion: 2.7
-
-Layout/ExtraSpacing:
-  AllowBeforeTrailingComments: true
-
-Style/Documentation:
-  Enabled: false
-
-Style/RegexpLiteral:
-  AllowInnerSlashes: true
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
+inherit_from:
+  - "~/.rubocop.yml"
