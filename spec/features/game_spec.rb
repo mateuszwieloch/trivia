@@ -2,11 +2,18 @@
 
 require_relative "./acceptance_helper"
 
-describe "New game", type: :feature do
-  it "flow" do
+describe "the Join Game page", type: :feature do
+
+  it "navigates to the Lobby page upon joining" do
     visit "/"
-    expect(page).to have_button("new-game")
-    click_button("new-game")
-    expect(page).to have_current_path(/game\/....$/)
+    fill_in("Name", with: "Mateusz")
+    click_button("Join")
+    expect(page).to have_selector("div#lobby.visible")
+  end
+
+  it "doesn't navigate unless name provided" do
+    visit "/"
+    click_button("Join")
+    expect(page).not_to have_selector("div#lobby.visible")
   end
 end

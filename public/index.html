@@ -5,16 +5,40 @@
   <meta charset="utf-8">
 
   <title>The Ultimate Trivia</title>
+  <style>
+    .page {
+      display: none;
+    }
+    .visible.page {
+      display: block;
+    }
+  </style>
+  <script defer src="scripts/main.js"></script>
 </head>
 
 
 <body>
   <h1>Trivia</h1>
-  <button id="new-game">Start a new game</button>
-  <script>
-    document.getElementById("new-game").onclick = function() {
-      location.href = "game/x47b";
-    };
-  </script>
+
+  <div id="join" class="visible page">
+    <form id="join-form">
+      <label for="name-input">Name</label>
+      <input id="name-input" required />
+      <button type="submit" id="join-button">Join</button>
+    </form>
+  </div>
+
+  <div id="lobby" class="page">
+    <h2>Game begins once 5 players join</h2>
+  </div>
+
+  <div id="question" class="page">
+  </div>
+
+  <div id="answer" class="page">
+  </div>
+
+  <div id="stats" class="page">
+  </div>
 </body>
 </html>
