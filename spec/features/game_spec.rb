@@ -3,7 +3,6 @@
 require_relative "./acceptance_helper"
 
 describe "the Join Game page", type: :feature do
-
   it "navigates to the Lobby page upon joining" do
     visit "/"
     fill_in("Name", with: "Mateusz")

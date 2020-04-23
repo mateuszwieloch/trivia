@@ -10,7 +10,7 @@ RSpec.configure do |config|
   config.include Capybara
 end
 
-require_relative "./../../trivia"
+require_relative "../../trivia"
 
 Capybara.app = Trivia.new
 Capybara.default_driver = :selenium_chrome_headless

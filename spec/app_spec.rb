@@ -2,7 +2,7 @@
 
 ENV["APP_ENV"] = "test"
 
-require "./../trivia"
+require_relative "../trivia"
 require "rspec"
 require "rack/test"
 

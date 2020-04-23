@@ -2,8 +2,8 @@
 
 require "sinatra/base"
 require "sinatra/json"
-require_relative "./src/in_memory_db"
-require_relative "./src/game"
+require_relative "src/db/in_memory"
+require_relative "src/game"
 
 class Trivia < Sinatra::Base
   attr_accessor :db
@@ -26,14 +26,18 @@ class Trivia < Sinatra::Base
     game.id
   end
 
-  get "/game/:id" do
+  get "/game/:id/waiting" do
     game = @db.find_game(params["id"])
     return 404 if game.nil?
-    if game.waiting_for_players?
-      WaitingGameView.from(game).to_json
-    else
-      {}.to_json
-    end
+    game.update
+    WaitingGameView.from(game).to_json
+  end
+
+  get "/game/:id/ongoing" do
+    game = @db.find_game(params["id"])
+    return 404 if game.nil?
+    game.update
+    OngoingGameView.from(game).to_json
   end
 
   run! if app_file == $PROGRAM_NAME
